@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/home.dart';
+import 'package:frontend/screens/leftovers_management.dart';
 import 'package:frontend/screens/suggested_foods.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SuggestedFoods(),
+      home: LeftoversManagement(),
     );
   }
 }
