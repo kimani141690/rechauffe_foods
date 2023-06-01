@@ -51,61 +51,70 @@ class SuggestedFoods extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(left: 15, top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              margin: const EdgeInsets.only(right: 20),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 35),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.menu_rounded),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.search),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Column(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.menu_rounded),
+                  CustomText(
+                    text: "Gennerated Suggestions",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                    textColor: AppColors.mainColor,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.search),
-                  )
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  CustomText(
+                    text: "From to your leftovers",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                    textColor: AppColors.mainColor,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  CustomText(
+                    text: "Get healthy food suggestions",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomText(
-              text: "Gennerated Suggestions",
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-              textColor: AppColors.mainColor,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            CustomText(
-              text: "According to Your Leftovers",
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-              textColor: AppColors.mainColor,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            CustomText(
-              text: "Get healthy food suggestions",
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
-            SizedBox(
-              height: 30,
+            const SizedBox(
+              height: 20,
             ),
             Container(
-              margin: EdgeInsets.only(left: 16, right: 16),
-              height: 65,
+              margin: const EdgeInsets.only(left: 16, right: 16),
+              height: 60,
               width: double.infinity,
               child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
+                separatorBuilder: (context, index) => const SizedBox(
                   width: 32,
                 ),
                 scrollDirection: Axis.horizontal,
@@ -119,15 +128,12 @@ class SuggestedFoods extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
             Center(
               child: Container(
                 height: 522,
                 width: 375,
                 child: ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(
+                  separatorBuilder: (context, index) => const SizedBox(
                     height: 15,
                   ),
                   itemCount: calories.length,
