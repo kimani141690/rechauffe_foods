@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "724248475737",
+    "project_id": "rechauffe-9faf2",
+    "storage_bucket": "rechauffe-9faf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724248475737:android:5560ea3ac2b59b3adad948",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI4tYyrJTc9X1n8xvlJDRSd45wJ9EfNUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
