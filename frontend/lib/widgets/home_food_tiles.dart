@@ -44,12 +44,11 @@ class HomeFoodTiles extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image.asset(
-                imageURL,
-                height: 160,
-                width: 150,
-              ),
-            ),
+                child: Image.network(
+              imageURL,
+              height: 150,
+              width: 100,
+            )),
             SizedBox(
               height: 5,
             ),
@@ -66,7 +65,7 @@ class HomeFoodTiles extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(
-                  text: calories,
+                  text: "$calories Calories",
                   fontWeight: FontWeight.normal,
                   fontSize: 17,
                   textColor: AppColors.greyTextColor,

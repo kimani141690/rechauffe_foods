@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/utils/colors.dart';
 import 'package:frontend/widgets/balanced_diet_widget.dart';
@@ -7,8 +8,14 @@ import 'package:frontend/widgets/home_food_tiles.dart';
 import 'package:frontend/widgets/icon_buttons.dart';
 
 // ignore: must_be_immutable
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   List<IconData> icons = [
     Icons.breakfast_dining,
     Icons.lunch_dining,
@@ -43,6 +50,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CollectionReference _recipes =
+        FirebaseFirestore.instance.collection('Recipes');
+
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 15, top: 30),
@@ -116,28 +126,48 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Container(
-              margin: EdgeInsets.only(
-                left: 16,
-                right: 16,
-              ),
-              height: 315,
-              width: double.infinity,
-              child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 15,
-                ),
-                scrollDirection: Axis.horizontal,
-                itemCount: icons.length,
-                itemBuilder: (context, index) {
-                  return HomeFoodTiles(
-                    calories: '49 calories',
-                    imageURL: foodURL[index],
-                    title: titles[index],
-                  );
-                },
-              ),
-            ),
+            StreamBuilder(
+                stream: _recipes.snapshots(),
+                builder:
+                    (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                  if (streamSnapshot.hasData) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                      ),
+                      height: 315,
+                      width: double.infinity,
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => SizedBox(
+                          width: 15,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: streamSnapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          final DocumentSnapshot documentSnapshot =
+                              streamSnapshot.data!.docs[index];
+                          String modifiedImageURL = documentSnapshot['Images'];
+
+                          if (modifiedImageURL.startsWith('"') &&
+                              modifiedImageURL.endsWith('"')) {
+                            // Remove the first and last character (quotation marks)
+                            modifiedImageURL = modifiedImageURL.substring(
+                                1, modifiedImageURL.length - 1);
+                          }
+                          return HomeFoodTiles(
+                            calories: documentSnapshot['Calories'].toString(),
+                            imageURL: modifiedImageURL,
+                            title: documentSnapshot['Name'],
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    // Handle the case when there is no data available
+                    return CircularProgressIndicator(); // or any other widget you want to display
+                  }
+                }),
             SizedBox(
               height: 25,
             ),
