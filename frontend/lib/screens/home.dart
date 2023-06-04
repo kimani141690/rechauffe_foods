@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/utils/colors.dart';
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(left: 15, top: 30),
+        margin: EdgeInsets.only(left: 15, top: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -106,7 +108,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               margin: EdgeInsets.only(left: 16, right: 16),
-              height: 65,
+              height: 60,
               width: double.infinity,
               child: ListView.separated(
                 separatorBuilder: (context, index) => SizedBox(
@@ -133,7 +135,6 @@ class _HomePageState extends State<HomePage> {
                   if (streamSnapshot.hasData) {
                     return Container(
                       margin: EdgeInsets.only(
-                        left: 16,
                         right: 16,
                       ),
                       height: 315,
@@ -143,10 +144,14 @@ class _HomePageState extends State<HomePage> {
                           width: 15,
                         ),
                         scrollDirection: Axis.horizontal,
-                        itemCount: streamSnapshot.data!.docs.length,
+                        itemCount: 10,
                         itemBuilder: (context, index) {
+                          final List<DocumentSnapshot> shuffledDocs =
+                              List.from(streamSnapshot.data!.docs);
+                          shuffledDocs.shuffle(Random());
+
                           final DocumentSnapshot documentSnapshot =
-                              streamSnapshot.data!.docs[index];
+                              shuffledDocs[index];
                           String modifiedImageURL = documentSnapshot['Images'];
 
                           if (modifiedImageURL.startsWith('"') &&
@@ -159,6 +164,7 @@ class _HomePageState extends State<HomePage> {
                             calories: documentSnapshot['Calories'].toString(),
                             imageURL: modifiedImageURL,
                             title: documentSnapshot['Name'],
+                            onTap: () {},
                           );
                         },
                       ),
