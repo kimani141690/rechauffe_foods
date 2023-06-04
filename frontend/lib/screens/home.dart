@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/recipe_details.dart';
 import 'package:frontend/utils/colors.dart';
 import 'package:frontend/widgets/balanced_diet_widget.dart';
 import 'package:frontend/widgets/bottom_nav.dart';
@@ -164,7 +165,16 @@ class _HomePageState extends State<HomePage> {
                             calories: documentSnapshot['Calories'].toString(),
                             imageURL: modifiedImageURL,
                             title: documentSnapshot['Name'],
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RecipeDetails(
+                                    id: documentSnapshot.id,
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),

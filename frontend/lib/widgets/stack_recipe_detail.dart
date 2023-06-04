@@ -11,7 +11,7 @@ class StackRecipeDetail extends StatelessWidget {
       Positioned(
         top: 0,
         child: Container(
-          height: 310,
+          height: 250,
           width: 413,
           decoration: BoxDecoration(
             color: AppColors.mainColor,
@@ -25,7 +25,7 @@ class StackRecipeDetail extends StatelessWidget {
       Align(
         alignment: Alignment.center,
         child: Padding(
-          padding: const EdgeInsets.only(top: 70),
+          padding: const EdgeInsets.only(top: 20),
           child: FractionallySizedBox(
             widthFactor:
                 0.8, // Adjust this value as needed to control the width of the container
@@ -36,10 +36,10 @@ class StackRecipeDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(170),
                 color: AppColors.greyTextColor,
                 image: DecorationImage(
-                  image: AssetImage(
+                  image: NetworkImage(
                     imageURL,
                   ),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

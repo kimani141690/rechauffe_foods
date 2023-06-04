@@ -13,6 +13,7 @@ class NutrientsButtons extends StatelessWidget {
     return Container(
       height: 60,
       width: 60,
+      margin: EdgeInsets.only(bottom: 10, left: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         boxShadow: const [
