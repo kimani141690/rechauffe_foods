@@ -153,7 +153,12 @@ class _RecipeDetailsState extends State<RecipeDetails> {
             ),
           );
         } else {
-          return const CircularProgressIndicator();
+          return Scaffold(
+            body: Center(
+                child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(AppColors.mainColor),
+            )),
+          );
         }
       },
     );
