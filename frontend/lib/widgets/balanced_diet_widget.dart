@@ -68,7 +68,7 @@ class BalancedDietWidget extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                const CustomText(
+                CustomText(
                   text: 'Stay healthy and young by eating a balanced diet',
                   fontWeight: FontWeight.normal,
                   fontSize: 16,

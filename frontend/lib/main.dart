@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/full_recipes.dart';
 import 'package:frontend/screens/home.dart';
 import 'package:frontend/screens/leftovers_management.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:frontend/screens/recipe_details.dart';
 import 'package:frontend/screens/suggested_foods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
