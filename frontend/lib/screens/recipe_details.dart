@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/full_recipes.dart';
 import 'package:frontend/utils/colors.dart';
 import 'package:frontend/widgets/check_recipe_btn.dart';
 import 'package:frontend/widgets/custon_text.dart';
@@ -149,7 +150,18 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   ]),
             ),
             bottomNavigationBar: BottomAppBar(
-              child: CheckRecipeButton(onTap: () {}),
+              child: CheckRecipeButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FullRecipes(
+                        id: widget.id,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           );
         } else {
