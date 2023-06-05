@@ -22,10 +22,11 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.inter(
-          color: textColor,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          height: lineheight),
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        height: lineheight,
+      ),
     );
   }
 }
