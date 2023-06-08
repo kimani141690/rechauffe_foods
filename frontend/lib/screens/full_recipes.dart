@@ -28,7 +28,7 @@ class _FullRecipesState extends State<FullRecipes> {
       Icons.cake
     ];
     List<String> text = ["min", "servings", "cal", "Easy"];
-    List<double> numbers = [35, 03, 101, 0];
+    List<String> numbers = ["35", "03", "101", "0"];
     final CollectionReference _recipes =
         FirebaseFirestore.instance.collection('Recipes');
     return FutureBuilder<DocumentSnapshot>(
@@ -101,7 +101,7 @@ class _FullRecipesState extends State<FullRecipes> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 180,
+                                width: 200,
                                 child: CustomText(
                                     text: data["Name"],
                                     fontWeight: FontWeight.w600,
@@ -143,7 +143,7 @@ class _FullRecipesState extends State<FullRecipes> {
                             return RecipeIcons(
                               icon: icons[index],
                               text: text[index],
-                              number: numbers[index],
+                              measurements: numbers[index],
                             );
                           },
                         ),

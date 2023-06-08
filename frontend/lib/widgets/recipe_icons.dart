@@ -5,8 +5,12 @@ import 'package:frontend/widgets/custon_text.dart';
 class RecipeIcons extends StatelessWidget {
   final IconData icon;
   final String text;
-  double? number;
-  RecipeIcons({super.key, required this.icon, required this.text, this.number});
+  final String measurements;
+  RecipeIcons(
+      {super.key,
+      required this.icon,
+      required this.text,
+      required this.measurements});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class RecipeIcons extends StatelessWidget {
             height: 5,
           ),
           CustomText(
-              text: number.toString(),
+              text: measurements,
               fontWeight: FontWeight.w600,
               fontSize: 16,
               textColor: Colors.white),
